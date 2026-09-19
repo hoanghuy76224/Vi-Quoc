@@ -248,10 +248,19 @@
   .env-seal .seal-cross{font-size:14px;line-height:1}
   .env-seal .seal-names{font-family:var(--serif);font-weight:600;font-size:12px;line-height:1;letter-spacing:.04em}
   .opening.opened .env-seal{opacity:0;transform:translate(-50%,-50%) scale(.5)}
-  .open-sub{font-family:var(--serif);font-style:italic;color:var(--do);font-size:14px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:2px}
-  .open-guest{font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;color:var(--muc);line-height:1.4;margin:10px 0 14px}
-  .open-title{font-family:var(--script);font-size:46px;color:var(--do);line-height:1.15;margin-top:2px}
-  .open-date{font-family:var(--serif);font-size:18px;color:var(--muc-nhat);letter-spacing:.24em;margin:6px 0 26px}
+  
+  
+  
+  
+  .open-eyebrow{font-family:var(--serif);font-style:italic;font-size:16px;letter-spacing:.06em;color:var(--muc-nhat);margin-bottom:10px}
+  .open-names{display:flex;flex-direction:column;align-items:center;line-height:.92;color:var(--do)}
+  .open-names span{font-family:var(--script)}
+  .open-names .on-1,.open-names .on-2{font-size:52px}
+  .open-names .on-amp{font-size:26px;color:var(--hong);margin:2px 0}
+  .open-date{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--muc);letter-spacing:.18em;margin:16px 0 20px}
+  .open-invite{font-family:var(--serif);font-size:16px;color:var(--muc);margin-bottom:26px}
+  .open-invite .oi-label{font-style:italic;color:var(--muc-nhat)}
+  .open-invite .oi-guest{font-family:var(--script);font-size:26px;color:var(--do-dam);border-bottom:1px solid var(--vien);padding:0 10px 2px;display:inline-block;line-height:1}
   .open-btn{font-family:var(--sans);font-size:14px;letter-spacing:.08em;color:#fff;background:var(--do);border:none;
     border-radius:999px;padding:13px 34px;cursor:pointer;box-shadow:0 8px 22px rgba(156,64,72,.32);transition:transform .2s,background .2s;
     animation:openpulse 2.2s ease-in-out infinite}
@@ -292,10 +301,14 @@
           <span class="seal-names">HV<br>QH</span>
         </div>
       </div>
-      <p class="open-sub">Trân trọng kính mời</p>
-      <p class="open-guest" id="openGuest" hidden></p>
-      <p class="open-title">Hạ Vi &amp; Quốc Hoài</p>
-      <p class="open-date">10 · 10 · 2026</p>
+      <p class="open-eyebrow">The Wedding Of</p>
+      <div class="open-names">
+        <span class="on-1">Hạ Vi</span>
+        <span class="on-amp">&amp;</span>
+        <span class="on-2">Quốc Hoài</span>
+      </div>
+      <p class="open-date">10 . 10 . 2026</p>
+      <p class="open-invite"><span class="oi-label">Kính mời</span> <span class="oi-guest" id="openGuest">Quý khách</span></p>
       <button class="open-btn" id="openBtn">Mở thiệp mời</button>
     </div>
   </div>
@@ -755,7 +768,7 @@
     document.body.classList.add('locked');
     try{
       var g=(new URLSearchParams(location.search).get('guest')||'').trim();
-      if(g){ var og=document.getElementById('openGuest'); if(og){ og.textContent='Thân mời '+g; og.hidden=false; } }
+      if(g){ var og=document.getElementById('openGuest'); if(og){ og.textContent=g; } }
     }catch(_){}
     btn.addEventListener('click', function(){
       ov.classList.add('opened');
